@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+
+
+.container{
+  width: 100vw;
+  height: 150vh;
+
+  padding-top: 50px;
+}
+
+.dragged{
+  cursor: pointer;
+
+  display: fixed;
+}
+
+.over{
+  background-color: BLUE;
+
+  height: 50%;
+  width: 50%;
+  display: block;
+}
+
+.active{
+   background-color: RED;
+}
