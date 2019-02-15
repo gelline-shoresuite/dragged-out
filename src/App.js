@@ -1,25 +1,48 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Headers from './headers'
+import Headers from './headers';
 
-//installed react-routed-dom and draggable
-import Draggable from 'react-draggable'; // The default
+
+import Drag from './Draggable';
+//import Drag from './DragAndDrop';
  
 
 class App extends Component {
 
-  state = {
-    x: this.props.x,
-    y: this.props.y,
+  constructor(props){
+    super(props);
 
-    over: this.props.over
-  };
+    this.state={
+      x: this.props.x,
+      y: this.props.y,
+
+      contents: [
+        { name: "Hello",
+          content: "World",
+          stated: "open"},
+        { name: "Bad",
+          content: "Time",
+          stated: "closed"}, 
+        { name: "Good",
+          content: "Work",
+          stated: "open"},
+        { name: "Bye",
+          content: "Time",
+          stated: "open"},
+      ],
+      
+    }
+  }
 
   handleDrag = (e, {deltaX, deltaY}) =>{
+    const {x, y} = this.state;
     this.setState({
-      x: this.state.x + deltaX,
-      y: this.state.y + deltaY
+      oldX: x,
+      oldY: y,
+
+      x: x + deltaX,
+      y: y + deltaY
     });
   };
 
@@ -34,6 +57,7 @@ class App extends Component {
       over: ' '
     })
   };
+
   
   render() {
     const {x, y} = this.state;
@@ -41,17 +65,12 @@ class App extends Component {
     return (
       <div className="App">
         <Headers />
-        <div className={ "container"}>
-          <div onMouseEnter={() => this.onMouseEnter()} onMouseLeave={() => this.onMouseLeave()} class={'over ' + this.state.over}>
-          </div> 
-
-          <Draggable onDrag={this.handleDrag} >
-          <p className="dragged">
-            Drag Me
-          </p>
           
-          </Draggable>
-        </div>
+          <Drag> HEY </Drag>   
+          <Drag> LOOK </Drag>     
+          <Drag> LISTEN </Drag>     
+          <Drag> !!!!! </Drag>            
+        
         
       </div>
     );
